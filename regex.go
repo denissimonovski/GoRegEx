@@ -26,8 +26,8 @@ func date_from_name(filename string) time.Time {
 }
 
 func main() {
-	r := regexp.MustCompile("Nekoj")
-	fajlovi, _ := ioutil.ReadDir("D:\\GoEnvironment\\GoProjects\\Regex")
+	r := regexp.MustCompile("Nesto")
+	fajlovi, _ := ioutil.ReadDir("/root/go/src/goregex")
 	for i := len(fajlovi) - 1; i >= 0; i-- {
 		if get_date(fajlovi[i].Name()) == "" {
 			fajlovi = append(fajlovi[:i], fajlovi[i+1:]...)
@@ -37,7 +37,7 @@ func main() {
 		return date_from_name(fajlovi[i].Name()).Before(date_from_name(fajlovi[j].Name()))
 	})
 	for _, i := range fajlovi {
-		fmt.Println(i.Name(), "==>", r.ReplaceAllString(i.Name(), "Nesto"))
-		os.Rename(i.Name(), r.ReplaceAllString(i.Name(), "Nesto"))
+		fmt.Println(i.Name(), "==>", r.ReplaceAllString(i.Name(), "Primer"))
+		os.Rename(i.Name(), r.ReplaceAllString(i.Name(), "Primer"))
 	}
 }
